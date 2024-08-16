@@ -1,16 +1,11 @@
-'use client'
-
-import { usePathname } from 'next/navigation'
-
+import { NextRequest } from 'next/server'
 import Border from '@/components/Border/Border'
 import Placeholder from '@/components/Placeholder/Placeholder'
 
-export default function Wdiget() {
-    const pathname = usePathname();
-    
-    const pathSegments = pathname.split('/').filter(Boolean);
-    const secondSegment = pathSegments.length > 1 ? pathSegments[1] : '';
-    const thirdSegment = pathSegments.length > 1 ? pathSegments[2] : '';
+export const runtime = 'edge'
+
+export default function Widget({ params }: { params: { widget: string[] } }) {
+    const [secondSegment, thirdSegment] = params.widget
 
     const renderComponent = () => {
       switch (secondSegment) {
@@ -27,6 +22,5 @@ export default function Wdiget() {
     <>
       {renderComponent()}
     </>
-    
   )
 }
