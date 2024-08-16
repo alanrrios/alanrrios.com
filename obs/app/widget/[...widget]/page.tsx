@@ -1,4 +1,3 @@
-import { NextRequest } from 'next/server'
 import Border from '@/components/Border/Border'
 import Placeholder from '@/components/Placeholder/Placeholder'
 

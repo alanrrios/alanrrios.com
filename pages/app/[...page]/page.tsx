@@ -7,6 +7,8 @@ import InfoCard from "@/components/InfoCard/InfoCard"
 
 import { Separator } from "@/components/ui/separator"
 
+export const runtime = 'edge'
+
 const products = [
   { title: 'budgiter' },
   { title: 'population' },
