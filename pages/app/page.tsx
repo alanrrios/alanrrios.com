@@ -52,18 +52,15 @@ export default function Home() {
         <ContextMenuSub>
           <ContextMenuSubTrigger inset>obs</ContextMenuSubTrigger>
           <ContextMenuSubContent className="w-48">
-            <ContextMenuItem disabled>
-              borders
-              <ContextMenuShortcut>[]</ContextMenuShortcut>
-            </ContextMenuItem>
-            <ContextMenuItem disabled>
-              status
-              <ContextMenuShortcut>rec</ContextMenuShortcut>
-            </ContextMenuItem>
-            <ContextMenuItem disabled>
-              dates
-              <ContextMenuShortcut>cdt</ContextMenuShortcut>
-            </ContextMenuItem>
+            <Link 
+              className=""
+              href="https://obs.alanrrios.com/widget"
+            >
+              <ContextMenuItem>
+                widgets
+                <ContextMenuShortcut>#</ContextMenuShortcut>
+              </ContextMenuItem>
+            </Link>
           </ContextMenuSubContent>
         </ContextMenuSub>
 

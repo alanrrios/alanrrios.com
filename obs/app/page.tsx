@@ -20,6 +20,67 @@ import {
   ContextMenuTrigger,
 } from "@/components/ui/context-menu"
 
+const components: { 
+  title: string; 
+  subcomponents?: { title: string; href: string; enabled: boolean; }[]; 
+}[] = [
+  {
+    title: "border",
+    subcomponents: [
+      {
+        title: "large-desktop",
+        href: "/widget/border/large-desktop",
+        enabled: true,
+      },
+      {
+        title: "medium-desktop",
+        href: "/widget/border/medium-desktop",
+        enabled: true,
+      },
+      {
+        title: "large-camera",
+        href: "/widget/border/large-camera",
+        enabled: false,
+      },
+      {
+        title: "medium-camera",
+        href: "/widget/border/medium-camera",
+        enabled: false,
+      },
+    ],
+  },
+  {
+    title: "status",
+    subcomponents: [
+      {
+        title: "large-rec",
+        href: "/widget/status/large/rec",
+        enabled: true,
+      },
+      {
+        title: "small-rec",
+        href: "/widget/status/small/rec",
+        enabled: true,
+      },
+    ],
+  },
+  {
+    title: "times",
+    subcomponents: [
+      {
+        title: "large-cdt",
+        href: "/widget/times/large/cdt",
+        enabled: true,
+      },
+      {
+        title: "small-cdt",
+        href: "/widget/times/small/cdt",
+        enabled: true,
+      },
+    ],
+  },
+]
+
 export default function Home() {
   return (
     <>
@@ -53,40 +114,25 @@ export default function Home() {
                 </ContextMenuItem>
               </Link>
               <ContextMenuSeparator />
-              <Link 
-                className=""
-                href="/border"
-              >
-                <ContextMenuItem inset>
-                  border
-                </ContextMenuItem>
-              </Link>
-              <ContextMenuSub>
-                <ContextMenuSubTrigger inset>status</ContextMenuSubTrigger>
-                <ContextMenuSubContent className="w-48">
-                  <ContextMenuItem disabled>
-                    rec
-                    <ContextMenuShortcut></ContextMenuShortcut>
-                  </ContextMenuItem>
-                  <ContextMenuItem disabled>
-                    live
-                    <ContextMenuShortcut></ContextMenuShortcut>
-                  </ContextMenuItem>
-                </ContextMenuSubContent>
-              </ContextMenuSub>
-              <ContextMenuSub>
-                <ContextMenuSubTrigger inset>date</ContextMenuSubTrigger>
-                <ContextMenuSubContent className="w-48">
-                  <ContextMenuItem disabled>
-                    large
-                    <ContextMenuShortcut></ContextMenuShortcut>
-                  </ContextMenuItem>
-                  <ContextMenuItem disabled>
-                    small
-                    <ContextMenuShortcut></ContextMenuShortcut>
-                  </ContextMenuItem>
-                </ContextMenuSubContent>
-              </ContextMenuSub>
+              {components.map(component => (
+                <ContextMenuSub key={component.title}>
+                  <ContextMenuSubTrigger inset>{component.title}</ContextMenuSubTrigger>
+                  <ContextMenuSubContent className="w-48">
+                    {component.subcomponents?.map(subcomponent => (
+                      <Link 
+                        key={subcomponent.title} 
+                        className=""
+                        href={subcomponent.href} 
+                      >
+                        <ContextMenuItem disabled={!subcomponent.enabled}>
+                          {subcomponent.title}
+                          <ContextMenuShortcut></ContextMenuShortcut>
+                        </ContextMenuItem>
+                      </Link>
+                    ))}
+                  </ContextMenuSubContent>
+                </ContextMenuSub>
+              ))}
             </ContextMenuContent>
           </ContextMenu>
         </main>

@@ -1,6 +1,8 @@
 'use client'
 
 import { useState } from 'react'
+import { forwardRef } from 'react'
+
 
 import Link from 'next/link'; // Add this import
 
@@ -25,9 +27,14 @@ export default function FooterLink() {
     <>
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="link">@alanrrios</Button>
+        <Button
+          variant="link"
+          className="focus-visible:ring-transparent"
+        >
+          @alanrrios
+        </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56">
+      <DropdownMenuContent className="rounded-sm w-56">
         <DropdownMenuLabel>alanrrios</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>

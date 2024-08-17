@@ -31,7 +31,7 @@ const products = [
 ]
 
 const callsToAction = [
-  { name: 'follow', href: 'https://x.com/alanrrios/', icon: UsersIcon },
+  { name: 'follow', href: 'https://github.com/alanrrios?direction=desc&sort=updated&tab=stars', icon: UsersIcon },
   { name: 'contact', href: 'mailto:contact@alanrrios.com', icon: EnvelopeIcon },
 ]
 
@@ -82,7 +82,7 @@ export default function Example() {
             <PopoverPanel
               transition
               anchor="bottom end"
-              className="absolute -left-8 top-full z-10 mt-3 w-108 overflow-hidden rounded-3xl bg-card shadow-lg ring-1 ring-ring/5 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
+              className="absolute -left-8 top-full z-10 mt-3 w-108 overflow-hidden rounded-md bg-card shadow-lg ring-1 ring-ring/5 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
             >
               <div className="p-4">
                 {products.map((item) => (
@@ -147,7 +147,7 @@ export default function Example() {
                   init
                 </Link>
                 <Disclosure as="div" className="-mx-3">
-                  <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-foreground">
+                  <DisclosureButton className="group flex w-full items-center justify-between py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-foreground">
                     work
                     <ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-none group-data-[open]:rotate-180" />
                   </DisclosureButton>

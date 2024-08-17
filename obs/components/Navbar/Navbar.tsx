@@ -27,7 +27,7 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { Button } from "@/components/ui/button"
 
 const products = [
-  { name: 'Budgiter', description: 'Intuitive budgeting empowering financial awareness', href: '/budgiter', icon: ChartPieIcon },
+  { name: 'Budgiter', description: 'Intuitive budgeting empowering financial awareness', href: 'https://alanrrios.com/budgiter', icon: ChartPieIcon },
 ]
 
 const callsToAction = [
@@ -82,7 +82,7 @@ export default function Example() {
             <PopoverPanel
               transition
               anchor="bottom end"
-              className="absolute -left-8 top-full z-10 mt-3 w-108 overflow-hidden rounded-3xl bg-card shadow-lg ring-1 ring-ring/5 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
+              className="absolute -left-8 top-full z-10 mt-3 w-108 overflow-hidden rounded-md bg-card shadow-lg ring-1 ring-ring/5 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
             >
               <div className="p-4">
                 {products.map((item) => (
