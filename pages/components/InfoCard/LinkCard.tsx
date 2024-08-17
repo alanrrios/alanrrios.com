@@ -16,11 +16,11 @@ const productLinks: ProductLink[] = [
 ]
 
 interface LinkCardProps {
-  productTitle: string;
+  pageTitle: string;
 }
 
-export default function LinkCard({ productTitle }: LinkCardProps) {
-  const productLink = productLinks.find(link => link.title === productTitle)
+export default function LinkCard({ pageTitle }: LinkCardProps) {
+  const productLink = productLinks.find(link => link.title === pageTitle)
 
   if (!productLink) {
     return <div className='p-0 h-min text-muted-foreground'>product link missing</div>; 

@@ -1,26 +1,49 @@
-import Link from 'next/link'
+'use client'
+
+import { useState } from 'react' // Add this import
 import { notFound } from 'next/navigation'
 
 import Navbar from "@/components/Navbar/Navbar"
 import ModeToggle from "@/components/ui/mode/mode-toggle"
+import FooterLink from "@/components/FooterLink/FooterLink"
+
 import InfoCard from "@/components/InfoCard/InfoCard"
+import ViewportSize from '@/components/ViewportSize/ViewportSize'
 
 import { Separator } from "@/components/ui/separator"
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog" // Add this import
+
 
 export const runtime = 'edge'
 
-const products = [
+const pages = [
   { title: 'budgiter' },
-  { title: 'population' },
+  { title: 'viewport' },
 ]
+
+const pageComponents = {
+  viewport: {
+    Component: ViewportSize,
+    getProps: (title: string) => ({ pageTitle: title }),
+  },
+  default: {
+    Component: InfoCard,
+    getProps: (title: string) => ({ pageTitle: title }),
+  },
+}
 
 export default function Home({ params }: { params: { page: string[] } }) {
   const pathname = params.page?.[0] || ''
+
+  const [dialogOpen, setDialogOpen] = useState(false) // Add this state
   
-  const product = products.find(product => product.title === pathname)
-  if (!product) {
+  const page = pages.find(page => page.title === pathname)
+  if (!page) {
     notFound()
   }
+
+  const { Component, getProps } = pageComponents[pathname as keyof typeof pageComponents] || pageComponents.default
+  const componentProps = getProps(page.title)
 
   return (
     <>
@@ -29,18 +52,13 @@ export default function Home({ params }: { params: { page: string[] } }) {
           <Navbar />
         </header>
 
-        <main className="grid place-items-center px-6 py-24 sm:py-32 lg:px-8">
-          <InfoCard productTitle={product.title} />
+        <main className="grid place-items-center">
+          <Component {...componentProps} />
         </main>
 
         <footer className="mt-auto">
           <div className="flex flex-row gap-3 justify-center items-center">
-            <Link 
-              className="text-base font-normal text-foreground"
-              href="https://x.com/alanrrios"
-            >
-              @alanrrios
-            </Link>
+            <FooterLink />
             <Separator orientation="vertical" className='h-6' />
             <ModeToggle />
           </div>

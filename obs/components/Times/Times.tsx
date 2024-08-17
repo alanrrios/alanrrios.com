@@ -1,12 +1,15 @@
 'use client'
 
+interface TimesProps {
+  size?: string;
+  timezone?: string;
+}  
+
 import React, { useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation'
 import { format } from 'date-fns';
 import { UTCDate } from "@date-fns/utc";
 
-const CurrentTime = () => {
-  const pathname = usePathname();
+export default function Times({ size, timezone }: TimesProps) { // Removed params
   const [currentDateTime, setCurrentDateTime] = useState(new Date());
 
   useEffect(() => {
@@ -17,13 +20,9 @@ const CurrentTime = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const pathSegments = pathname.split('/').filter(Boolean);
-  const secondToLastSegment = pathSegments.length > 1 ? pathSegments[pathSegments.length - 2] : '';
-  const lastPathSegment = pathname.split('/').filter(Boolean).pop() || '';
-  const isUniversalTime = lastPathSegment.toLowerCase() === 'universal';
 
   const getStyles = () => {
-    switch (secondToLastSegment.toLowerCase()) {
+    switch (size) {
       case 'small':
         return {
           container: 'w-[131px] h-[64px]',
@@ -47,6 +46,8 @@ const CurrentTime = () => {
 
   const styles = getStyles();
 
+  const isUniversalTime = timezone === 'utc'; // Check if timezone prop is 'UTC'
+
   let formattedDate, formattedTime, timeZoneLabel;
 
   if (isUniversalTime) {
@@ -69,5 +70,3 @@ const CurrentTime = () => {
     </div>
   );
 };
-
-export default CurrentTime;

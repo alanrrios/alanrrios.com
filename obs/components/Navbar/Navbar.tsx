@@ -31,7 +31,7 @@ const products = [
 ]
 
 const callsToAction = [
-  { name: 'follow', href: 'https://x.com/alanrrios/', icon: UsersIcon },
+  { name: 'follow', href: 'https://github.com/alanrrios?direction=desc&sort=updated&tab=stars', icon: UsersIcon },
   { name: 'contact', href: 'mailto:contact@alanrrios.com', icon: EnvelopeIcon },
 ]
 

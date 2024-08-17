@@ -1,6 +1,9 @@
 interface BorderProps {
   size?: string;
 }
+
+import Placeholder from '@/components/Placeholder/Placeholder'
+
 import rotateStyles from './styles.module.css'
 
 export default function Border({ size }: BorderProps) {
@@ -42,7 +45,7 @@ export default function Border({ size }: BorderProps) {
   const styles = getStyles();
 
   return (
-    <div className={`relative block ${styles.container} rounded-lg overflow-hidden shadow`}>
+    <div className={`relative block ${styles.container} rounded-sm overflow-hidden shadow`}>
       <div className={`
         absolute ${styles.position} block ${styles.borderBox} bg-gradient-to-b from-gray-600 via-gray-200 to-gray-600
         ${rotateStyles.rotate}
@@ -50,6 +53,7 @@ export default function Border({ size }: BorderProps) {
       <div className={`
         absolute left-[8px] top-[8px] block grow ${styles.item} border-2 border-primary
       `} />
+      <Placeholder size={size} />
     </div>
   );
 }

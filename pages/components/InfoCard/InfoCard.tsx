@@ -11,13 +11,13 @@ import {
 
 import LinkCard from "./LinkCard" 
 
-interface ProductInfo {
+interface PageInfo {
   title: string;
   description: string;
   content: string;
 }
 
-const productDetails: ProductInfo[] = [
+const pageDetails: PageInfo[] = [
   {
     title: "budgiter",
     description: "the budgeting way",
@@ -26,27 +26,27 @@ const productDetails: ProductInfo[] = [
 ]
 
 interface InfoCardProps {
-  productTitle: string;
+  pageTitle: string;
 }
 
-export default function InfoCard({ productTitle }: InfoCardProps) {
-  const productInfo = productDetails.find(product => product.title === productTitle)
+export default function InfoCard({ pageTitle }: InfoCardProps) {
+  const pageInfo = pageDetails.find(page => page.title === pageTitle)
 
-  if (!productInfo) {
+  if (!pageInfo) {
     return <div>Product not found</div>
   }
 
   return (
     <Card className="w-[350px] p-6 space-y-3 text-center">
       <CardHeader className="p-0">
-        <CardTitle>{productInfo.title}</CardTitle>
-        <CardDescription>{productInfo.description}</CardDescription>
+        <CardTitle>{pageInfo.title}</CardTitle>
+        <CardDescription>{pageInfo.description}</CardDescription>
       </CardHeader>
       <CardContent className="p-0">
-        {productInfo.content}
+        {pageInfo.content}
       </CardContent>
       <CardFooter className="p-0 justify-center">
-        <LinkCard productTitle={productTitle} />
+        <LinkCard pageTitle={pageTitle} />
       </CardFooter>
     </Card>
   )

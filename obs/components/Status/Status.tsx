@@ -1,19 +1,32 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation'
 import { format } from 'date-fns';
 
-const BlinkingDot = () => {
-  const pathname = usePathname();
+interface StatusProps {
+  size?: string;
+  status?: string;
+}  
+
+const statusItems = [
+  {
+    title: "REC",
+    href: "rec",
+  },
+  {
+    title: "LIVE",
+    href: "live",
+  },
+]
+
+export default function Status({ size, status }: StatusProps) { // Removed params
 
   const date = format(new Date, 'EEEE')
 
-  const pathSegments = pathname.split('/').filter(Boolean);
-  const secondToLastSegment = pathSegments.length > 1 ? pathSegments[pathSegments.length - 2] : '';
+  const statusTitle = statusItems.find(item => item.href === status)?.title || '';
 
   const getStyles = () => {
-    switch (secondToLastSegment.toLowerCase()) {
+    switch (size) {
       case 'small':
         return {
           container: 'w-[131px] h-[64px]',
@@ -68,11 +81,9 @@ const BlinkingDot = () => {
               boxShadow: `${styles.shadow}`
             }}
           />
-          <div className={`${styles.text} font-semibold text-white text-outline`}>REC</div>  
+          <div className={`${styles.text} font-semibold text-white text-outline`}>{statusTitle || 'REC'}</div>  
         </div>
-      </div>  
+      </div>
     </div>
   );
 };
-
-export default BlinkingDot;
