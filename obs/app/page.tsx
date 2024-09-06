@@ -40,12 +40,12 @@ const components: {
       {
         title: "large-camera",
         href: "/widget/border/large-camera",
-        enabled: false,
+        enabled: true,
       },
       {
         title: "medium-camera",
         href: "/widget/border/medium-camera",
-        enabled: false,
+        enabled: true,
       },
     ],
   },

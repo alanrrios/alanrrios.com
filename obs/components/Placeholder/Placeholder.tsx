@@ -10,9 +10,13 @@ export default function Border({ size }: PlaceholderProps) {
   
   const getStyles = () => {
     switch (size) {
-      case 'small-camera':
+      case 'medium-camera':
         return {
           container: 'w-[528px] h-[396px]',
+        };
+      case 'large-camera':
+        return {
+          container: 'w-[1056px] h-[792px]',
         };
       case 'large-desktop':
         return {

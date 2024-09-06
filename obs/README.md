@@ -12,11 +12,10 @@ styles:
 
 ```bash
 npx shadcn-ui@latest init
+npm install next-themes
 npm install lucide-react
 npm install @heroicons/react
 npm install @headlessui/react
-npm install next-themes
-
 ```
 
 dates:

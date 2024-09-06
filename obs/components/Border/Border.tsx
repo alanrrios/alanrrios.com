@@ -25,12 +25,26 @@ export default function Border({ size }: BorderProps) {
           borderBox: 'w-[1808px] h-[1808px]'
         };
       case 'medium-desktop':
-          return {
-            container: 'w-[656px] h-[376px]',
-            item: 'w-[640px] h-[360px]',
-            position: '-left-[76px] -top-[216px]',
-            borderBox: 'w-[808px] h-[808px]'
-          };
+        return {
+          container: 'w-[656px] h-[376px]',
+          item: 'w-[640px] h-[360px]',
+          position: '-left-[76px] -top-[216px]',
+          borderBox: 'w-[808px] h-[808px]'
+        };
+      case 'large-camera':
+        return {
+          container: 'w-[1072px] h-[808px]',
+          item: 'w-[1056px] h-[792px]',
+          position: '-left-[476px] -top-[344px]',
+          borderBox: 'w-[1808px] h-[1808px]'
+        };
+      case 'medium-camera':
+        return {
+          container: 'w-[544px] h-[412px]',
+          item: 'w-[528px] h-[396px]',
+          position: '-left-[76px] -top-[216px]',
+          borderBox: 'w-[808px] h-[808px]'
+        };
       default:
         return {
           container: '',
